@@ -1,6 +1,5 @@
 .portfolio {
   width: 100%;
-  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: stretch;
@@ -18,27 +17,31 @@
   overflow: hidden;
 }
 
+.portfolio__cv > a {
+  display: none;
+}
+
+.portfolio__cv--body {
+  height: 70vh;
+  padding: 20px;
+  border-radius: 20px;
+}
+
 h1,
 h2 {
   margin-bottom: 35px;
   text-align: center;
 }
 
-/* Контейнер для сетки */
 .portfolio__projects {
   display: flex;
   flex-direction: column;
   padding: 20px;
+  min-height: 100vh;
 }
 
-.portfolio__wrap {
-  padding: 20px;
-}
-
-/* Заголовок таблицы */
 .portfolio__section:first-child {
   font-weight: bold;
-  margin-bottom: 10px;
 }
 h2 + .portfolio__wrap {
   border-radius: 0px;
@@ -47,19 +50,26 @@ h2 + .portfolio__wrap {
 .portfolio__wrap {
   border-radius: 10px;
   background-color: #bdbdbd;
-  margin-bottom: 20px;
 }
 
-/* Сетка */
+.small_tips {
+  position: relative;
+}
+
+small {
+  position: absolute;
+  bottom: 0;
+  left: 50px;
+}
 .portfolio__section {
   display: grid;
   grid-template-columns:
-    40px
+    80px
+    minmax(100px, 150px)
+    minmax(120px, 100px)
+    minmax(130px, 1fr)
     minmax(120px, 150px)
-    minmax(80px, 100px)
-    minmax(200px, 1fr)
-    minmax(120px, 150px)
-    minmax(120px, 150px);
+    minmax(100px, 150px);
   gap: 10px;
   align-items: center;
   padding: 20px;
@@ -70,7 +80,6 @@ h2 + .portfolio__wrap {
   margin-left: 20px;
 }
 
-/* Стили для ячеек */
 .portfolio__section span,
 a {
   text-align: center;
@@ -82,7 +91,6 @@ a {
   box-sizing: border-box;
 }
 
-/* Ссылки */
 a {
   background-color: #4caf50;
   color: white;
@@ -96,7 +104,6 @@ a:hover {
   background-color: #45a049;
 }
 
-/* Столбец со стеком технологий */
 .portfolio__section span:nth-child(4) {
   text-align: left;
   word-break: break-word;
@@ -107,11 +114,14 @@ a:hover {
   display: none;
 }
 
-/* Адаптивность */
 @media (max-width: 1550px) {
   .portfolio {
     flex-direction: column;
-    height: auto;
+    width: 100%;
+  }
+
+  .portfolio__cv,
+  .portfolio__projects {
     width: 100%;
   }
 
@@ -127,13 +137,6 @@ a:hover {
 
   .portfolio__section span:nth-child(4) {
     text-align: center;
-  }
-
-  .portfolio__cv,
-  .portfolio__projects {
-    width: 100%;
-    margin-bottom: 20px;
-    height: 100vh;
   }
 
   h1,
@@ -157,6 +160,16 @@ a:hover {
 }
 
 @media (max-width: 768px) {
+  .portfolio__cv > a {
+    display: block;
+  }
+  iframe {
+    display: none;
+  }
+
+  .portfolio__cv--body {
+    height: auto;
+  }
   span:nth-child(5),
   span:nth-child(6) {
     display: none;
